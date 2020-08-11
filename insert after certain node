@@ -1,0 +1,69 @@
+package LLquest;
+import java.util.*;
+public class InsertAtKey {
+Node head;
+void add(int data)
+{
+Node toAdd = new Node(data);
+if(head==null)
+{
+head=toAdd;
+return;
+}
+Node temp=head;
+while(temp.next!=null)
+{
+temp=temp.next;
+}
+temp.next=toAdd;
+}
+void print()
+{
+	Node temp=head;
+	while(temp!=null)
+	{
+	System.out.println(temp.data+" " );
+	temp=temp.next;
+	}
+}
+void insert()
+{
+	Node temp=head;
+	Scanner sc= new Scanner(System.in);
+	System.out.println("Enter element to insert");
+	int k=sc.nextInt();
+	Node f = new Node(k);
+	System.out.println("Enter the index for the element");
+	int x=sc.nextInt();
+	for(int i=0;i<(x-1);i++)
+	{
+	temp=temp.next;
+	}
+	f.next=temp.next;
+	temp.next=f;
+	sc.close();
+}
+static class Node
+{
+int data;
+Node next;
+public Node(int d){
+data=d;
+next=null;
+}
+}
+public static void main(String[] args) {
+InsertAtKey ll= new InsertAtKey();
+Scanner sc = new Scanner(System.in);
+int n,e;
+n=sc.nextInt();
+for (int i=0;i<n;i++) 	
+{
+e=sc.nextInt();
+ll.add(e);
+}
+ll.insert();
+ll.print();
+sc.close();
+}
+}
